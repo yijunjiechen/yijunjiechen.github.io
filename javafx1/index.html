@@ -6,21 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>骏杰的个人博客 | 骏杰的个人博客</title>
+  <title>javafx窗口设置 | 骏杰学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里是骏杰的个人博客，主要记录一些计算机编程技术。欢迎各位大神参观交流。 目录Java基础JavaFx基础Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment">
+  <meta name="description" content="一个简单的窗口程序代码12345678910111213141516public class JavaFxNote extends Application &amp;#123;    public static void main(String[] args)    &amp;#123;&#x2F;&#x2F;        调用launch方法启动应用         launch(args);    &amp;#125;    @Ove">
 <meta property="og:type" content="article">
-<meta property="og:title" content="骏杰的个人博客">
-<meta property="og:url" content="http://example.com/hello-world/index.html">
-<meta property="og:site_name" content="骏杰的个人博客">
-<meta property="og:description" content="这里是骏杰的个人博客，主要记录一些计算机编程技术。欢迎各位大神参观交流。 目录Java基础JavaFx基础Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment">
+<meta property="og:title" content="javafx窗口设置">
+<meta property="og:url" content="http://example.com/javafx1/index.html">
+<meta property="og:site_name" content="骏杰学习笔记">
+<meta property="og:description" content="一个简单的窗口程序代码12345678910111213141516public class JavaFxNote extends Application &amp;#123;    public static void main(String[] args)    &amp;#123;&#x2F;&#x2F;        调用launch方法启动应用         launch(args);    &amp;#125;    @Ove">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-01T03:38:51.919Z">
-<meta property="article:modified_time" content="2022-08-02T07:50:45.083Z">
+<meta property="og:image" content="http://example.com/javafx1/1.png">
+<meta property="article:published_time" content="2022-08-03T02:26:51.067Z">
+<meta property="article:modified_time" content="2022-08-03T02:52:46.661Z">
 <meta property="article:author" content="骏杰">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/javafx1/1.png">
   
-    <link rel="alternative" href="/atom.xml" title="骏杰的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="骏杰学习笔记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,7 +49,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/head.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -95,7 +97,40 @@
 		</nav>
 	</header>		
 </div>
+<!--时钟-->
+<div style="position:absolute; bottom:120px left:auto; width:100%;height:50%">
+	<script type="text/javascript" src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+  	<div id="clock" style="font-family: 'Share Tech Mono', monospace;color: #ffffff;text-align: center;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(50%, 50%);transform: translate(-50%, -50%);color: #000000;">
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.1em;font-size: 15px;">{{ date }}</p>
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.01em;font-size: 38px;">{{ time }}</p>
+  	</div>
+	<script>
+		var clock = new Vue({
+			el: '#clock',
+			data: {
+				time: '',
+				date: ''
+			}
+		});
 
+		var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+		var timerID = setInterval(updateTime, 1000);
+		updateTime();
+		function updateTime() {
+			var cd = new Date();
+			clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+			clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + week[cd.getDay()];
+		};
+
+		function zeroPadding(num, digit) {
+			var zero = '';
+			for (var i = 0; i < digit; i++) {
+				zero += '0';
+			}
+			return (zero + num).slice(-digit);
+		}
+	</script>
+</div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -107,7 +142,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/head.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -158,33 +193,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javafx1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      骏杰的个人博客
+      javafx窗口设置
     </h1>
   
 
         
-        <a href="/hello-world/" class="archive-article-date">
-  	<time datetime="2022-08-01T03:38:51.919Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-01</time>
+        <a href="/javafx1/" class="archive-article-date">
+  	<time datetime="2022-08-03T02:26:51.067Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这里是骏杰的个人博客，主要记录一些计算机编程技术。欢迎各位大神参观交流。</p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a><a target="_blank" rel="noopener" href="https://yijunjiechen.github.io/2022/08/02/java-main/">Java基础</a></h3><h3 id="JavaFx基础"><a href="#JavaFx基础" class="headerlink" title="JavaFx基础"></a><a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">JavaFx基础</a></h3><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="一个简单的窗口程序"><a href="#一个简单的窗口程序" class="headerlink" title="一个简单的窗口程序"></a>一个简单的窗口程序</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class JavaFxNote extends Application &#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">//        调用launch方法启动应用</span><br><span class="line">         launch(args);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void start(Stage primaryStage) throws Exception &#123;</span><br><span class="line">//        设置窗口标题</span><br><span class="line">        primaryStage.setTitle(<span class="string">&quot;骏杰小程序&quot;</span>);</span><br><span class="line">//        设置窗口图标</span><br><span class="line">        primaryStage.getIcons().add(new Image(<span class="string">&quot;/pic/icon3.jpg&quot;</span>));</span><br><span class="line">//        显示窗口</span><br><span class="line">        primaryStage.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>上面给出的代码已经写好了对应的注释。启动窗口程序，如果点击启动后提示：“没有javafx组件”，那么添加配置</p>
+<p>–module-path “E:\Java\javafx-sdk-11.0.2\lib” –add-modules=javafx.controls,javafx.fxml</p>
+<p>中间的路径改为自己对应的javafx SDK里的lib文件夹路径。我使用的是IntelliJ idea开发环境，将上面的配置复制到Run -&gt; Edit Configurations -&gt;VM options里即可。其他开发环境大家自行摸索。</p>
+<p>javafx窗口除了start()外还有两个方法init() 、stop() 。init() 、stop() 可以省略，但start()方法必须写。这三个方法在窗口启动时，调用顺序为：init() -&gt; start() -&gt;stop() 。init() 由线程JavaFX-Launcher处理，start()和stop()由线程JAVAFX Application Thread处理。<br>下面是上面代码的运行窗口：<br><img src="/javafx1/1.png" alt="image"></p>
+<p>很简单的一个窗口，只有图标、标题、还有默认的放大、缩小、关闭三个按钮。</p>
+<p>下面给出窗口设置的一些代码（写在start()方法里），有些代码是冲突的，大家可对部分代码注释后再运行。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public void start(Stage primaryStage) throws Exception &#123;</span><br><span class="line">//        设置窗口标题</span><br><span class="line">        primaryStage.setTitle(<span class="string">&quot;骏杰小程序&quot;</span>);</span><br><span class="line">//        设置窗口图标</span><br><span class="line">        primaryStage.getIcons().add(new Image(<span class="string">&quot;/pic/icon3.jpg&quot;</span>));</span><br><span class="line"> </span><br><span class="line">        primaryStage.setIconified(<span class="literal">true</span>);//设置最小化</span><br><span class="line">        primaryStage.setMaximized(<span class="literal">true</span>);//设置最大化</span><br><span class="line"> </span><br><span class="line">        primaryStage.setWidth(500);//设置窗口宽</span><br><span class="line">        primaryStage.setHeight(500);//设置窗口高</span><br><span class="line"> </span><br><span class="line">        primaryStage.setMaxWidth(1000);//设置窗口最大宽</span><br><span class="line">        primaryStage.setMaxHeight(1000);//设置窗口最大高</span><br><span class="line"> </span><br><span class="line">        primaryStage.setMinWidth(300);//设置窗口最小宽</span><br><span class="line">        primaryStage.setMinHeight(300);//设置窗口最小高</span><br><span class="line"> </span><br><span class="line">        primaryStage.setResizable(<span class="literal">true</span>);//设置不可改变窗口大小</span><br><span class="line"> </span><br><span class="line">    primaryStage.setOpacity(0.5);//设置透明度0~1</span><br><span class="line">    primaryStage.setAlwaysOnTop(<span class="literal">true</span>);//设置窗口置顶</span><br><span class="line"> </span><br><span class="line">//        设置窗口初始位置</span><br><span class="line">    primaryStage.setX(100);</span><br><span class="line">    primaryStage.setY(100);</span><br><span class="line"> </span><br><span class="line">//        动态获取窗口x、y坐标</span><br><span class="line">primaryStage.xProperty().addListener(new ChangeListener&lt;Number&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void changed(ObservableValue&lt;? extends Number&gt; observable, Number oldValue, Number newValue) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;窗口X坐标&quot;</span>+newValue.doubleValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">primaryStage.yProperty().addListener(new ChangeListener&lt;Number&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void changed(ObservableValue&lt;? extends Number&gt; observable, Number oldValue, Number newValue) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;窗口Y坐标&quot;</span>+newValue.doubleValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">//        动态获取窗口宽</span><br><span class="line">primaryStage.widthProperty().addListener(new ChangeListener&lt;Number&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void changed(ObservableValue&lt;? extends Number&gt; observable, Number oldValue, Number newValue) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;当前宽度=&quot;</span>+newValue.doubleValue());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">//        动态获取窗口高</span><br><span class="line">primaryStage.heightProperty().addListener(new ChangeListener&lt;Number&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void changed(ObservableValue&lt;? extends Number&gt; observable, Number oldValue, Number newValue) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;当前高度=&quot;</span>+newValue.doubleValue());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line">//        设置全屏，必须设置Scene</span><br><span class="line">        primaryStage.setFullScreen(<span class="literal">true</span>);</span><br><span class="line">        primaryStage.setScene(new Scene(new Group()));</span><br><span class="line">//        显示窗口</span><br><span class="line">        primaryStage.show();</span><br><span class="line"> </span><br><span class="line">//        如果没有设置窗口的宽高，获取窗口的宽高需要写在primaryStage.show()后</span><br><span class="line">        System.out.println(<span class="string">&quot;宽度=&quot;</span>+primaryStage.getWidth());//获取窗口宽度</span><br><span class="line">        System.out.println(<span class="string">&quot;高度=&quot;</span>+primaryStage.getHeight());//获取窗口高度</span><br><span class="line"> </span><br><span class="line">        primaryStage.close();//关闭窗口</span><br><span class="line">        Platform.<span class="built_in">exit</span>();//所有窗口关闭，包括虚拟机</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -264,7 +301,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/javafx1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,20 +313,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/java-main/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java基础
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -329,11 +352,18 @@
     	<div class="footer-left">
     		&copy; 2022 骏杰
     	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
     </div>
   </div>
+  
+       <span id="busuanzi_container_site_pv">
+               本站总访问量<span id="busuanzi_value_site_pv"></span>次
+       </span>
+       <span class="post-meta-divider">|</span>
+       <span id="busuanzi_container_site_uv" style='display:none'>
+               本站访客数<span id="busuanzi_value_site_uv"></span>人
+       </span>
+       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 </footer>
     </div>
     <script>
@@ -348,7 +378,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 

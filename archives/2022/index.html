@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | 骏杰的个人博客</title>
+  <title>Archives: 2022 | 骏杰学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录一些计算机编程技术，目前主要更新JavaFx">
 <meta property="og:type" content="website">
-<meta property="og:title" content="骏杰的个人博客">
+<meta property="og:title" content="骏杰学习笔记">
 <meta property="og:url" content="http://example.com/archives/2022/index.html">
-<meta property="og:site_name" content="骏杰的个人博客">
+<meta property="og:site_name" content="骏杰学习笔记">
 <meta property="og:description" content="记录一些计算机编程技术，目前主要更新JavaFx">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="骏杰">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="骏杰的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="骏杰学习笔记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/head.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -93,7 +93,40 @@
 		</nav>
 	</header>		
 </div>
+<!--时钟-->
+<div style="position:absolute; bottom:120px left:auto; width:100%;height:50%">
+	<script type="text/javascript" src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+  	<div id="clock" style="font-family: 'Share Tech Mono', monospace;color: #ffffff;text-align: center;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(50%, 50%);transform: translate(-50%, -50%);color: #000000;">
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.1em;font-size: 15px;">{{ date }}</p>
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.01em;font-size: 38px;">{{ time }}</p>
+  	</div>
+	<script>
+		var clock = new Vue({
+			el: '#clock',
+			data: {
+				time: '',
+				date: ''
+			}
+		});
 
+		var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+		var timerID = setInterval(updateTime, 1000);
+		updateTime();
+		function updateTime() {
+			var cd = new Date();
+			clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+			clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + week[cd.getDay()];
+		};
+
+		function zeroPadding(num, digit) {
+			var zero = '';
+			for (var i = 0; i < digit; i++) {
+				zero += '0';
+			}
+			return (zero + num).slice(-digit);
+		}
+	</script>
+</div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -105,7 +138,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/head.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -173,41 +206,14 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       	<div class="article-meta">
-	      	<a href="/java-main/" class="archive-article-date">
-  	<time datetime="2022-08-02T07:44:49.289Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-02</time>
+	      	<a href="/javafx1/" class="archive-article-date">
+  	<time datetime="2022-08-03T02:26:51.067Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-03</time>
 </a>
         </div>
     	 
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/java-main/">Java基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hello-world/" class="archive-article-date">
-  	<time datetime="2022-08-01T03:38:51.919Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hello-world/">骏杰的个人博客</a>
+      <a class="archive-article-title" href="/javafx1/">javafx窗口设置</a>
     </h1>
   
 
@@ -237,11 +243,18 @@
     	<div class="footer-left">
     		&copy; 2022 骏杰
     	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
     </div>
   </div>
+  
+       <span id="busuanzi_container_site_pv">
+               本站总访问量<span id="busuanzi_value_site_pv"></span>次
+       </span>
+       <span class="post-meta-divider">|</span>
+       <span id="busuanzi_container_site_uv" style='display:none'>
+               本站访客数<span id="busuanzi_value_site_uv"></span>人
+       </span>
+       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 </footer>
     </div>
     <script>
@@ -256,7 +269,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
