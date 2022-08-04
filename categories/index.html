@@ -43,6 +43,39 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
+<div style="position:absolute; bottom:0px left:auto; width:100%;height:100%">
+	<script type="text/javascript" src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+  	<div id="clock" style="font-family: 'Share Tech Mono', monospace;color: #ffffff;text-align: center;position: absolute;left: 50%;top: 70%;-webkit-transform: translate(50%, 50%);transform: translate(-50%, -50%);color: #000000;">
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.1em;font-size: 15px;">{{ date }}</p>
+      		<p style="margin: 0;padding: 0;letter-spacing: 0.01em;font-size: 38px;">{{ time }}</p>
+  	</div>
+	<script>
+		var clock = new Vue({
+			el: '#clock',
+			data: {
+				time: '',
+				date: ''
+			}
+		});
+
+		var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+		var timerID = setInterval(updateTime, 1000);
+		updateTime();
+		function updateTime() {
+			var cd = new Date();
+			clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+			clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + week[cd.getDay()];
+		};
+
+		function zeroPadding(num, digit) {
+			var zero = '';
+			for (var i = 0; i < digit; i++) {
+				zero += '0';
+			}
+			return (zero + num).slice(-digit);
+		}
+	</script>
+</div>
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
@@ -81,53 +114,19 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/yijunjiechen" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/er-ci-yuan-38-35" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+					<a class="bilibili" target="_blank" href="https://space.bilibili.com/55934700?spm_id_from=333.337.0.0" title="bilibili"><i class="icon-bilibili"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:yijunjaychen@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="/%E5%AE%89%E9%9D%99%E6%AD%A3%E5%A5%BD" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
-					<a class="mail" target="_blank" href="/yijunjaychen@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
 	</header>		
-</div>
-<!--时钟-->
-<div style="position:absolute; bottom:120px left:auto; width:100%;height:50%">
-	<script type="text/javascript" src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
-  	<div id="clock" style="font-family: 'Share Tech Mono', monospace;color: #ffffff;text-align: center;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(50%, 50%);transform: translate(-50%, -50%);color: #000000;">
-      		<p style="margin: 0;padding: 0;letter-spacing: 0.1em;font-size: 15px;">{{ date }}</p>
-      		<p style="margin: 0;padding: 0;letter-spacing: 0.01em;font-size: 38px;">{{ time }}</p>
-  	</div>
-	<script>
-		var clock = new Vue({
-			el: '#clock',
-			data: {
-				time: '',
-				date: ''
-			}
-		});
-
-		var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-		var timerID = setInterval(updateTime, 1000);
-		updateTime();
-		function updateTime() {
-			var cd = new Date();
-			clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
-			clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + week[cd.getDay()];
-		};
-
-		function zeroPadding(num, digit) {
-			var zero = '';
-			for (var i = 0; i < digit; i++) {
-				zero += '0';
-			}
-			return (zero + num).slice(-digit);
-		}
-	</script>
 </div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -157,15 +156,15 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/yijunjiechen" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/er-ci-yuan-38-35" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+						<a class="bilibili" target="_blank" href="https://space.bilibili.com/55934700?spm_id_from=333.337.0.0" title="bilibili"><i class="icon-bilibili"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:yijunjaychen@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="/%E5%AE%89%E9%9D%99%E6%AD%A3%E5%A5%BD" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
-						<a class="mail" target="_blank" href="/yijunjaychen@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -202,6 +201,17 @@
     </h1>
   
 
+		<!--显示阅读次数-->
+		
+		<br/>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+            阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+		<!--显示阅读次数完毕-->
         
         <a href="/categories/index.html" class="archive-article-date">
   	<time datetime="2022-08-02T08:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-02</time>
@@ -213,7 +223,12 @@
       
         
       
-
+	  <!-- 增加版权声明 -->
+		
+		
+		  <div class="declare" hidden="hidden"></div>
+		
+	  <!-- 增加版权声明结束 -->
       
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
@@ -227,6 +242,16 @@
                   <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
@@ -354,6 +379,13 @@
        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
 </footer>
+<!--页面点击小红心-->
+<!--如果没效果，请确认网页是否已载入JQurey，如果没有请在下雪代码之前引入-->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/love.js"></script>
+<script type="text/javascript" src="/snow.js"></script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -427,6 +459,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">javafx</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -581,6 +617,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     </div>
 
 </div>
+	
   </div>
 </body>
 </html>
